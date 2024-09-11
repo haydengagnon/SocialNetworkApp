@@ -1,0 +1,81 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    <h1 id="profile-title">{{ post_user.username }}</h1>
+    <h2 id="following-title">Posts by Following</h2><hr>
+
+    {% if page_obj.paginator.num_pages > 1 %}
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% else %}
+                <span></span>
+                <span></span>
+            {% endif %}
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% else %}
+                <span></span>
+                <span></span>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <div id="all-posts">
+    {% for post in page_obj %}
+        <div class="post">
+            <h2 id="post-user">Posted by: <a href="{% url 'profile' post.user %}">{{ post.user }}</a></h2><hr>
+            <h4 class="posted-content" id="post-content">{{ post.content }}</h4><br>
+            <p id="post-timestamp">
+                {% csrf_token %}
+                Posted on: {{ post.timestamp }}
+                    {% if user.username == post.user.username %}
+                        <button class="btn btn-outline-secondary edit-btn" data-post-id="{{post.id}}">Edit</button>
+                    {% endif %}
+                {% if user.is_authenticated %}
+                    {% if post.id in liked_posts %}
+                        <button class="btn btn-primary like-btn" data-post-id="{{ post.id }}">
+                            Like <span class="like-count">{{ post.like_count }}</span>
+                        </button>
+                    {% else %}
+                        <button class="btn btn-outline-primary like-btn" data-post-id="{{ post.id }}">
+                            Like <span class="like-count">{{ post.like_count }}</span>
+                        </button>
+                    {% endif %}
+                {% else %}
+                    <span class="like-count">Likes: {{ post.like_count }}</span>
+                {% endif %}
+            </p>       
+        </div> 
+    {% endfor %}
+    </div>
+
+    {% if page_obj.paginator.num_pages > 1 %}
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% else %}
+                <span></span>
+                <span></span>
+            {% endif %}
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% else %}
+                <span></span>
+                <span></span>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    <h1 id="profile-title"><a href="{% url 'profile' profile.username %}">{{ profile.username }}</a></h1>
+    <h2 id="following-title">Followed Users</h2><hr>
+
+    {% for follow in followers %}
+        <h3 class="profile-followers"><a href="{% url 'profile' follow.following.username %}">{{ follow.following.username }}</a></h3><br>
+    {% endfor %}
+{% endblock %}

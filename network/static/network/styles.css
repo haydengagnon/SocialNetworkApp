@@ -1,0 +1,83 @@
+.new-post {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 10px;
+    text-align: right;
+}
+
+.post {
+    padding: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-style: solid;
+    border-radius: 15px;
+    border-color: darkgray;
+    border-width: 3px;
+    background-color: rgb(245, 245, 245);
+}
+
+#profile-title {
+    padding: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 48px;
+    font-weight: 600;
+}
+
+#post-timestamp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 1em;
+}
+
+.like-btn {
+    cursor: pointer;
+    font-size: 0.9em;
+    padding: 0.2em, 0.5em;
+}
+
+.posted-content {
+ white-space: pre-wrap;
+}
+
+
+
+#following-title {
+    padding: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 550;
+}
+
+#profile-navbar {
+    padding: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.profile-links {
+    margin-right: 20px;
+}
+
+.profile-followers {
+    padding: 10px;
+    margin-left: 50px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
